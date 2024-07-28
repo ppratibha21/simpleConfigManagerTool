@@ -1,0 +1,24 @@
+- type: package
+  name: apache2
+  state: present
+
+- type: package
+  name: php
+  state: present
+
+- type: file
+  path: /var/www/html/index.php
+  content: |
+    <?php
+      header("Content-Type: text/plain");
+      echo "Hello, world!\n";
+      exit;
+    ?>
+  owner: www-data
+  group: www-data
+  mode: "0644"
+  manage_file: true
+
+- type: service
+  name: apache2
+  state: reload
