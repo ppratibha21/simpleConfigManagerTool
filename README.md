@@ -28,16 +28,15 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 
     The bootstrap.sh file updates the package list, installs Python and pip, and installs the required Python packages.
 
-    ```./bootstrap.sh```
-
+    ```sh
+    ./bootstrap.sh
 3. Set the Environment Variables
 
    Ensure that the environment variables SSH_USERNAME and SSH_PASSWORD are set with the SSH credentials.
 
-    ```export SSH_USERNAME=root```
-
-    ```export SSH_PASSWORD=<password>```
-
+    ```sh
+    export SSH_USERNAME=root
+    export SSH_PASSWORD=<password>
 4. Edit Configuration Files
 
    Update the IP addresses in hosts.yaml to match your target hosts. Ensure your remote hosts are accessible via SSH and have the necessary permissions.
@@ -48,10 +47,10 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 
    Execute the main script to apply the configurations to the specified hosts.
 
-   ```python3 simpleconfigmanager.py```
-
+   ```py
+    python3 simpleconfigmanager.py
 ## Logging
-All actions and errors are logged to the `simpleconfigmanager.log` file. Check this file for detailed logs of the execution.
+All actions and errors are logged to the `simpleconfigmanager.log` file. The file will be create in the same directory when the code is run. Check this file for detailed logs of the execution.
 
 ## Tool Architecture
 
