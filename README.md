@@ -9,7 +9,7 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 - **Package Management:** Provides an abstraction to install and remove Debian packages.
 - **Service Management:** Provides a mechanism for restarting a service when relevant files or packages are updated.
 - **Idempotency:** Ensures safe application of configurations repeatedly.
-- **Configuration Specification:** Configure a web server capable of running the provided PHP application.
+- **Configuration Specification:** Configures 2 web servers capable of running the provided PHP application. IPs of the servers are in `hosts.yaml`
 - **Logging Support:**
 
 ## PHP Application
