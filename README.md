@@ -4,7 +4,7 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 
 ## Features
 
-- **Bootstrap Dependencies:** If your tool has dependencies not available on a standard Ubuntu instance, include a `bootstrap.sh` program to resolve them.
+- **Bootstrap Dependencies:** Includes a `bootstrap.sh` script to resolve dependencies that not available on a standard Ubuntu instance.
 - **File Management:** Provides an abstraction to specify a file's content and metadata (owner, group, mode).
 - **Package Management:** Provides an abstraction to install and remove Debian packages.
 - **Service Management:** Provides a mechanism for restarting a service when relevant files or packages are updated.
@@ -49,6 +49,55 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 
    ```py
     python3 simpleconfigmanager.py
+## Configuration File (`config.yaml`)
+
+The `config.yaml` file is used to define the configuration tasks. Each task is represented as an object with the following properties:
+
+- `type`: The type of the task. Can be `package`, `file`, or `service`.
+- `name`: The name of the package or service (required for `package` and `service` types).
+- `state`: The desired state of the package or service.
+
+### Valid States
+
+- For `package` type:
+  - `present`: Ensures the package is installed.
+  - `absent`: Ensures the package is removed.
+
+- For `service` type:
+  - `start`: Starts the service.
+  - `stop`: Stops the service.
+  - `restart`: Restarts the service.
+  - `reload`: Reloads the service configuration.
+
+### Example Configuration
+
+```yaml
+    - type: package
+    name: apache2
+    state: present
+
+    - type: package
+    name: php
+    state: present
+
+    - type: file
+    path: /var/www/html/index.php
+    content: |
+        <?php
+        header("Content-Type: text/plain");
+        echo "Hello, world!\n";
+        exit;
+        ?>
+    owner: www-data
+    group: www-data
+    mode: "0644"
+    manage_file: true
+
+    - type: service
+    name: apache2
+    state: reload
+```
+
 ## Logging
 All actions and errors are logged to the `simpleconfigmanager.log` file. The file will be create in the same directory when the code is run. Check this file for detailed logs of the execution.
 
