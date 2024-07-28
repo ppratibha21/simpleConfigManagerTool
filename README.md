@@ -1,6 +1,6 @@
 # SimpleConfigManager
 
-SimpleConfigManager is a rudimentary configuration management tool designed to configure servers for the production service of a simple PHP web application. This tool abstracts file content and metadata management, Debian package installation and removal, and service management. It is idempotent and safe to apply configurations multiple times.
+SimpleConfigManager is a rudimentary configuration management tool designed to configure servers for the production service of a simple PHP web application. This tool abstracts file content and metadata management, Debian package installation and removal, and service management. It is idempotent and safe to apply configurations multiple times. This tool configures the servers via SSH, which eliminates the need to copy the code base to the servers.
 
 ## Features
 
@@ -9,7 +9,7 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 - **Package Management:** Provides an abstraction to install and remove Debian packages.
 - **Service Management:** Provides a mechanism for restarting a service when relevant files or packages are updated.
 - **Idempotency:** Ensures safe application of configurations repeatedly.
-- **Configuration Specification:** Configures 2 web servers capable of running the provided PHP application. IPs of the servers are in `hosts.yaml`
+- **Configuration Specification:** Configures 2 web servers capable of running the provided PHP application. IPs of the servers are in `hosts.yaml`.
 - **Logging Support:**
 
 ## PHP Application
@@ -22,7 +22,7 @@ SimpleConfigManager is a rudimentary configuration management tool designed to c
 ```
 
 ## Installation
-1. Clone the repository or extract the code from the tar file
+1. Clone the repository or extract the code from the tar file.
 
 2. Run the `bootstrap.sh` file
 
@@ -116,6 +116,7 @@ All actions and errors are logged to the `simpleconfigmanager.log` file. The fil
     - _manage_service(ssh: paramiko.SSHClient, item: Dict[str, Any]): Manages a service on the remote host based on the configuration item.
 
 ## Further Improvements
-1. Install and activate a python virtual environment in bootstrap script
-2. Create unit tests for the code base
-3. When apache2 is remove/deleted - ideally we should remove `/var/www` folder
+A few improvements that can be done:
+1. Install and activate a python virtual environment in bootstrap script.
+2. Create unit tests for the code base.
+3. When apache2 is remove/deleted - ideally `/var/www` folder should be deleted too.
